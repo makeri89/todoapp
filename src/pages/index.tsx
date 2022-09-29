@@ -2,6 +2,7 @@ import type { GetServerSideProps, NextPage } from 'next'
 import { Todo } from '@lib/types'
 import { getSession, useSession } from 'next-auth/react'
 import axios from 'axios'
+import TodoList from '@ui/TodoList'
 
 interface Props {
 	todos: Todo[]
@@ -26,13 +27,7 @@ const Home: NextPage<Props> = ({ todos }) => {
 			Hello, {session?.user?.name} <button onClick={handleClick}>Submit</button>{' '}
 			<br />
 			Your todos:
-			<ul>
-				{todos.map((todo) => (
-					<li key={todo.task}>
-						{todo.task} {todo.status}
-					</li>
-				))}
-			</ul>
+			<TodoList todos={todos} />
 		</div>
 	)
 }
