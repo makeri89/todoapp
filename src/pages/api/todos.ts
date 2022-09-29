@@ -13,7 +13,7 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	console.log(req.query.user)
+	// console.log(req.query.user)
 	const client = await clientPromise
 	const db = client.db('test')
 	const todos = await db
@@ -21,7 +21,7 @@ export default async function handler(
 		.find({ user: req.query.user })
 		.toArray()
 
-	console.log(todos)
+	// console.log(todos)
 
 	res.status(200).json(todos)
 }

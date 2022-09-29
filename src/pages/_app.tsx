@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
-import { globalCss } from '../stitches.config'
+import { globalStyles } from '../stitches.config'
 
 interface CustomAppProps extends AppProps {
 	pageProps: CustomPageProps
@@ -10,17 +10,12 @@ interface CustomPageProps {
 	session: any
 }
 
-function MyApp({
+const MyApp = ({
 	Component,
 	pageProps: { session, ...pageProps },
-}: CustomAppProps) {
-	const globalStyles = globalCss({
-		'*': {
-			background: '$gray1',
-			color: '$gray12',
-		},
-	})
+}: CustomAppProps) => {
 	globalStyles()
+
 	return (
 		<SessionProvider session={session}>
 			<Component {...pageProps} />

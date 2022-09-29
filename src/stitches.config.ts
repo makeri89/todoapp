@@ -19,3 +19,13 @@ export const { styled, createTheme, globalCss } = createStitches({
 		},
 	},
 })
+
+export const globalStyles = globalCss({
+	'*': {
+		background: '$gray1',
+		color: '$gray12',
+	},
+	body: {
+		fontFamily: 'Raleway',
+	},
+})

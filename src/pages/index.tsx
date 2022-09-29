@@ -9,8 +9,7 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ todos }) => {
-	const { data: session, status } = useSession()
-	console.log(session, status)
+	const { data: session } = useSession()
 
 	const handleClick = async () => {
 		await axios.post('/api/create', {
@@ -24,8 +23,8 @@ const Home: NextPage<Props> = ({ todos }) => {
 
 	return (
 		<div>
-			Hello, {session?.user?.name} <button onClick={handleClick}>Submit</button>{' '}
-			<br />
+			Well Hello, {session?.user?.name}{' '}
+			<button onClick={handleClick}>Submit</button> <br />
 			Your todos:
 			<TodoList todos={todos} />
 		</div>
