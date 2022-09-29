@@ -5,3 +5,9 @@ export interface Todo {
 	week: string | null
 	status: string
 }
+
+export interface User {
+	email: string
+	name: string
+	image: string
+}
