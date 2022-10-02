@@ -4,6 +4,7 @@ import { getSession } from 'next-auth/react'
 import axios from 'axios'
 import { Box, Heading } from '@ui/atoms'
 import ListArea from '@ui/ListArea'
+import NewTodoModal from '@ui/NewTodoModal'
 
 interface Props {
 	todos: Todo[]
@@ -29,6 +30,7 @@ const Home: NextPage<Props> = ({ todos }) => {
 			>
 				<Heading level="h1">Your todos</Heading>
 			</Box>
+			<NewTodoModal />
 			<ListArea todos={todos} />
 		</Box>
 	)

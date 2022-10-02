@@ -8,7 +8,7 @@ import {
 
 import { createStitches } from '@stitches/react'
 
-export const { styled, createTheme, globalCss } = createStitches({
+export const { styled, createTheme, globalCss, keyframes } = createStitches({
 	theme: {
 		colors: {
 			...grayDark,
@@ -24,11 +24,9 @@ export const { styled, createTheme, globalCss } = createStitches({
 })
 
 export const globalStyles = globalCss({
-	'*': {
-		color: '$gray12',
-	},
 	body: {
 		fontFamily: 'Raleway',
 		background: '$gray1',
+		color: '$gray12',
 	},
 })
