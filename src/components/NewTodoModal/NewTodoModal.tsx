@@ -9,28 +9,28 @@ import { getWeek } from '@lib/utils'
 import dayjs from 'dayjs'
 
 const NewTodoModal = () => {
-	const task = useRecoilValue(newTaskState)
-	const week = useRecoilValue(newWeekState)
-	const dueDate = useRecoilValue(newDueDateState)
+  const task = useRecoilValue(newTaskState)
+  const week = useRecoilValue(newWeekState)
+  const dueDate = useRecoilValue(newDueDateState)
 
-	const { data: session } = useSession()
+  const { data: session } = useSession()
 
-	const handleSubmit = async () => {
-		await axios.post('/api/create', {
-			task,
-			week: getWeek(week),
-			dueDate,
-			status: 'todo',
-			user: session?.user.email,
-			created_at: dayjs(),
-		})
-	}
+  const handleSubmit = async () => {
+    await axios.post('/api/create', {
+      task,
+      week: getWeek(week),
+      dueDate,
+      status: 'todo',
+      user: session?.user.email,
+      created_at: dayjs(),
+    })
+  }
 
-	return (
-		<Modal title="Add todo" trigger={<Button>Add new todo</Button>}>
-			<TodoForm handleSubmit={handleSubmit} />
-		</Modal>
-	)
+  return (
+    <Modal title="Add todo" trigger={<Button>Add new todo</Button>}>
+      <TodoForm handleSubmit={handleSubmit} />
+    </Modal>
+  )
 }
 
 export default NewTodoModal

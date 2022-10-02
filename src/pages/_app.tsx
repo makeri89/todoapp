@@ -4,26 +4,26 @@ import { globalStyles } from '@lib/stitches.config'
 import { RecoilRoot } from 'recoil'
 
 interface CustomAppProps extends AppProps {
-	pageProps: CustomPageProps
+  pageProps: CustomPageProps
 }
 
 interface CustomPageProps {
-	session: any
+  session: any
 }
 
 const MyApp = ({
-	Component,
-	pageProps: { session, ...pageProps },
+  Component,
+  pageProps: { session, ...pageProps },
 }: CustomAppProps) => {
-	globalStyles()
+  globalStyles()
 
-	return (
-		<SessionProvider session={session}>
-			<RecoilRoot>
-				<Component {...pageProps} />
-			</RecoilRoot>
-		</SessionProvider>
-	)
+  return (
+    <SessionProvider session={session}>
+      <RecoilRoot>
+        <Component {...pageProps} />
+      </RecoilRoot>
+    </SessionProvider>
+  )
 }
 
 export default MyApp
