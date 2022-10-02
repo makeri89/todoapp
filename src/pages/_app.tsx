@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 import { globalStyles } from '@lib/stitches.config'
+import { RecoilRoot } from 'recoil'
 
 interface CustomAppProps extends AppProps {
 	pageProps: CustomPageProps
@@ -18,7 +19,9 @@ const MyApp = ({
 
 	return (
 		<SessionProvider session={session}>
-			<Component {...pageProps} />
+			<RecoilRoot>
+				<Component {...pageProps} />
+			</RecoilRoot>
 		</SessionProvider>
 	)
 }

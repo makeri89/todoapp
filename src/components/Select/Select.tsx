@@ -1,4 +1,5 @@
 import { ChevronDownIcon } from '@radix-ui/react-icons'
+import { Dispatch, SetStateAction } from 'react'
 import {
 	Content,
 	ItemText,
@@ -12,11 +13,13 @@ import {
 
 interface Props {
 	options: { value: string; label: string }[]
+	value: string
+	setValue: Dispatch<SetStateAction<string>>
 }
 
-const Select = ({ options }: Props) => {
+const Select = ({ options, value, setValue }: Props) => {
 	return (
-		<Root>
+		<Root value={value} onValueChange={setValue}>
 			<StyledTrigger>
 				<Value placeholder="Set week" />
 				<StyledIcon>

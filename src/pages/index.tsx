@@ -1,25 +1,23 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { Todo } from '@lib/types'
-import { getSession } from 'next-auth/react'
-import axios from 'axios'
+import { getSession, useSession } from 'next-auth/react'
 import { Box, Heading } from '@ui/atoms'
 import ListArea from '@ui/ListArea'
 import NewTodoModal from '@ui/NewTodoModal'
+import clientPromise from '@lib/mongodb'
+import { parseMongoTodos } from '@lib/utils'
 
 interface Props {
 	todos: Todo[]
 }
 
 const Home: NextPage<Props> = ({ todos }) => {
-	// const handleClick = async () => {
-	// 	await axios.post('/api/create', {
-	// 		task: 'testing',
-	// 		dueDate: null,
-	// 		week: 39,
-	// 		status: 'todo',
-	// 		user: session?.user.email,
-	// 	})
-	// }
+	const { data: session } = useSession({
+		required: true,
+		onUnauthenticated() {
+			window.location.href = '/api/auth/signin'
+		},
+	})
 
 	return (
 		<Box>
@@ -28,7 +26,7 @@ const Home: NextPage<Props> = ({ todos }) => {
 					textAlign: 'center',
 				}}
 			>
-				<Heading level="h1">Your todos</Heading>
+				<Heading level="h1">Your todos, {session?.user.name}</Heading>
 			</Box>
 			<NewTodoModal />
 			<ListArea todos={todos} />
@@ -40,12 +38,15 @@ export default Home
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const session = await getSession(context)
-	const data = await axios.get('http://localhost:3000/api/todos', {
-		params: { user: session?.user.email },
-	})
+	const client = await clientPromise
+	const db = client.db('test')
+	const todos = await db
+		.collection('todos')
+		.find({ user: session?.user.email })
+		.toArray()
 	return {
 		props: {
-			todos: await data.data,
+			todos: parseMongoTodos(todos),
 		},
 	}
 }
