@@ -1,25 +1,25 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { Todo } from '@lib/types'
-import { getSession } from 'next-auth/react'
+import { getSession, useSession } from 'next-auth/react'
 import { Box, Heading } from '@ui/atoms'
 import ListArea from '@ui/ListArea'
 import NewTodoModal from '@ui/NewTodoModal'
 import clientPromise from '@lib/mongodb'
 import { parseMongoTodos } from '@lib/utils'
-// import { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 
 interface Props {
 	todos: Todo[]
 }
 
 const Home: NextPage<Props> = ({ todos }) => {
-	// const router = useRouter()
-	// const { data: session } = useSession({
-	// 	required: true,
-	// 	onUnauthenticated() {
-	// 		router.replace('/api/auth/signin')
-	// 	},
-	// })
+	const router = useRouter()
+	const { data: session } = useSession({
+		required: true,
+		onUnauthenticated() {
+			router.replace('/api/auth/signin')
+		},
+	})
 
 	return (
 		<Box>
@@ -28,7 +28,7 @@ const Home: NextPage<Props> = ({ todos }) => {
 					textAlign: 'center',
 				}}
 			>
-				<Heading level="h1">Your todos</Heading>
+				<Heading level="h1">Your todos, {session?.user.name}</Heading>
 			</Box>
 			<NewTodoModal />
 			<ListArea todos={todos} />
