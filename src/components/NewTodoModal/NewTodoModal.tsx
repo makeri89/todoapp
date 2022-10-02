@@ -15,8 +15,6 @@ const NewTodoModal = () => {
 
 	const { data: session } = useSession()
 
-	console.log({ task, week, getted: getWeek(week), dueDate })
-
 	const handleSubmit = async () => {
 		await axios.post('/api/create', {
 			task,

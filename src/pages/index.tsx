@@ -41,7 +41,7 @@ export default Home
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const session = await getSession(context)
 	const client = await clientPromise
-	const db = client.db('test')
+	const db = client.db(process.env.MONGODB_DATABASE)
 	const todos = await db
 		.collection('todos')
 		.find({ user: session?.user.email })
