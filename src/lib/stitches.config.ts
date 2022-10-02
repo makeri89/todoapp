@@ -18,14 +18,17 @@ export const { styled, createTheme, globalCss } = createStitches({
 			...plumDark,
 		},
 	},
+	media: {
+		md: '(min-width: 640px)',
+	},
 })
 
 export const globalStyles = globalCss({
 	'*': {
-		background: '$gray1',
 		color: '$gray12',
 	},
 	body: {
 		fontFamily: 'Raleway',
+		background: '$gray1',
 	},
 })

@@ -3,6 +3,10 @@ import { Todo } from '@lib/types'
 import { getSession, useSession } from 'next-auth/react'
 import axios from 'axios'
 import TodoList from '@ui/TodoList'
+import dayjs from 'dayjs'
+import isoWeek from 'dayjs/plugin/isoWeek'
+
+dayjs.extend(isoWeek)
 
 interface Props {
 	todos: Todo[]
@@ -23,8 +27,9 @@ const Home: NextPage<Props> = ({ todos }) => {
 
 	return (
 		<div>
-			Well Hello, {session?.user?.name}{' '}
-			<button onClick={handleClick}>Submit</button> <br />
+			Hello, {session?.user?.name} <button onClick={handleClick}>Submit</button>{' '}
+			Week {dayjs().isoWeek()}
+			<br />
 			Your todos:
 			<TodoList todos={todos} />
 		</div>

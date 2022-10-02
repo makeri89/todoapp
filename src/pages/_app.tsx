@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
-import { globalStyles } from '../stitches.config'
+import { globalStyles } from '@lib/stitches.config'
 
 interface CustomAppProps extends AppProps {
 	pageProps: CustomPageProps
