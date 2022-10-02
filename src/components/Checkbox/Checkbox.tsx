@@ -14,6 +14,7 @@ const StyledCheckbox = styled(Checkbox.Root, {
 	justifyContent: 'center',
 	'&:hover': { backgroundColor: green.green4 },
 	'&:focus': { boxShadow: `0 0 0 2px black` },
+	'&:checked': { backgroundColor: green.green4 },
 })
 
 const StyledIndicator = styled(Checkbox.Indicator, {

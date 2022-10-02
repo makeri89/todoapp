@@ -11,8 +11,8 @@ export const Wrapper = styled(Flex, {
 	variants: {
 		size: {
 			small: {
-				width: 'calc(95% - 20px)',
-				padding: '20px 10px',
+				width: 'calc(90vw - 60px)',
+				padding: '20px 30px',
 			},
 			md: {
 				width: 300,

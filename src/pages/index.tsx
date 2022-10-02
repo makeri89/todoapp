@@ -1,38 +1,36 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { Todo } from '@lib/types'
-import { getSession, useSession } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 import axios from 'axios'
-import TodoList from '@ui/TodoList'
-import dayjs from 'dayjs'
-import isoWeek from 'dayjs/plugin/isoWeek'
-
-dayjs.extend(isoWeek)
+import { Box, Heading } from '@ui/atoms'
+import ListArea from '@ui/ListArea'
 
 interface Props {
 	todos: Todo[]
 }
 
 const Home: NextPage<Props> = ({ todos }) => {
-	const { data: session } = useSession()
-
-	const handleClick = async () => {
-		await axios.post('/api/create', {
-			task: 'testing',
-			dueDate: null,
-			week: 39,
-			status: 'todo',
-			user: session?.user.email,
-		})
-	}
+	// const handleClick = async () => {
+	// 	await axios.post('/api/create', {
+	// 		task: 'testing',
+	// 		dueDate: null,
+	// 		week: 39,
+	// 		status: 'todo',
+	// 		user: session?.user.email,
+	// 	})
+	// }
 
 	return (
-		<div>
-			Hello, {session?.user?.name} <button onClick={handleClick}>Submit</button>{' '}
-			Week {dayjs().isoWeek()}
-			<br />
-			Your todos:
-			<TodoList todos={todos} />
-		</div>
+		<Box>
+			<Box
+				css={{
+					textAlign: 'center',
+				}}
+			>
+				<Heading level="h1">Your todos</Heading>
+			</Box>
+			<ListArea todos={todos} />
+		</Box>
 	)
 }
 

@@ -2,7 +2,7 @@ export interface Todo {
 	id: string
 	task: string
 	dueDate: string | null
-	week: string | null
+	week: number | null
 	status: string
 }
 
