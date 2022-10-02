@@ -2,16 +2,16 @@
 import { atom } from 'recoil'
 
 export const newTaskState = atom({
-	key: 'newTaskState',
-	default: '',
+  key: 'newTaskState',
+  default: '',
 })
 
 export const newDueDateState = atom({
-	key: 'newDueDateState',
-	default: undefined,
+  key: 'newDueDateState',
+  default: undefined,
 })
 
 export const newWeekState = atom({
-	key: 'newWeekState',
-	default: 'current',
+  key: 'newWeekState',
+  default: 'current',
 })
