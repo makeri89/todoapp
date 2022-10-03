@@ -1,23 +1,34 @@
 import { styled } from '@lib/stitches.config'
-import { Flex } from '@ui/atoms'
+import { Box } from '@ui/atoms'
 
-export const Wrapper = styled(Flex, {
+export const Wrapper = styled(Box, {
+  display: 'grid',
+  gridTemplateColumns: 'auto 1fr',
   alignItems: 'center',
   gap: 10,
   margin: '15px 0',
-  backgroundColor: '$plum5',
-  width: 300,
   borderRadius: 15,
+  textAlign: 'left',
+  padding: '20px 30px',
   variants: {
     size: {
       small: {
         width: 'calc(90vw - 60px)',
-        padding: '20px 30px',
       },
       md: {
         width: 300,
-        padding: '40px 30px',
       },
     },
+    status: {
+      completed: {
+        backgroundColor: '$green5',
+      },
+      todo: {
+        backgroundColor: '$plum5',
+      },
+    },
+  },
+  defaultVariants: {
+    status: 'todo',
   },
 })
