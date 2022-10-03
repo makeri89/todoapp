@@ -3,7 +3,7 @@ export interface Todo {
   task: string
   dueDate: string | null
   week: number | null
-  status: string
+  status: 'todo' | 'completed'
 }
 
 export type MongoTodo = Omit<Todo, 'id'> & { _id: string }

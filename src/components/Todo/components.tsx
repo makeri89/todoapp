@@ -7,7 +7,6 @@ export const Wrapper = styled(Box, {
   alignItems: 'center',
   gap: 10,
   margin: '15px 0',
-  backgroundColor: '$plum5',
   borderRadius: 15,
   textAlign: 'left',
   padding: '20px 30px',
@@ -20,5 +19,16 @@ export const Wrapper = styled(Box, {
         width: 300,
       },
     },
+    status: {
+      completed: {
+        backgroundColor: '$green5',
+      },
+      todo: {
+        backgroundColor: '$plum5',
+      },
+    },
+  },
+  defaultVariants: {
+    status: 'todo',
   },
 })

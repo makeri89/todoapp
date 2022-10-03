@@ -22,12 +22,19 @@ const StyledIndicator = styled(Checkbox.Indicator, {
   marginTop: 3,
 })
 
-const CustomCheckbox = () => (
-  <StyledCheckbox>
-    <StyledIndicator>
-      <CheckIcon color={green.green12} />
-    </StyledIndicator>
-  </StyledCheckbox>
-)
+interface Props {
+  checked: boolean
+  handleChange: () => void
+}
+
+const CustomCheckbox = ({ checked, handleChange }: Props) => {
+  return (
+    <StyledCheckbox checked={checked} onCheckedChange={handleChange}>
+      <StyledIndicator>
+        {checked && <CheckIcon color={green.green12} />}
+      </StyledIndicator>
+    </StyledCheckbox>
+  )
+}
 
 export default CustomCheckbox
