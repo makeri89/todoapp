@@ -19,19 +19,17 @@ const Home: NextPage<Props> = ({ todos }) => {
   const { data: session } = useSession({
     required: true,
     onUnauthenticated() {
-      router.replace('/api/auth/signin')
+      router.replace('/login')
     },
   })
 
   return (
-    <Box>
-      <Box
-        css={{
-          textAlign: 'center',
-        }}
-      >
-        <Heading level="h1">Your todos, {session?.user.name}</Heading>
-      </Box>
+    <Box
+      css={{
+        textAlign: 'center',
+      }}
+    >
+      <Heading level="h1">Your todos, {session?.user.name}</Heading>
       <NewTodoModal />
       <ListArea todos={todos} />
     </Box>

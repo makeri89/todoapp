@@ -65,10 +65,7 @@ const TodoForm = ({ handleSubmit }: Props) => {
             <Select options={selectOptions} value={week} setValue={setWeek} />
           </Flex>
         </Flex>
-        <Button
-          css={{ backgroundColor: 'green', marginTop: 10 }}
-          onClick={handleSubmit}
-        >
+        <Button variant="green" css={{ marginTop: 10 }} onClick={handleSubmit}>
           Add todo
         </Button>
       </form>
