@@ -27,7 +27,10 @@ const NewTodoModal = () => {
   }
 
   return (
-    <Modal title="Add todo" trigger={<Button>Add new todo</Button>}>
+    <Modal
+      title="Add todo"
+      trigger={<Button variant="indigo">Add new todo</Button>}
+    >
       <TodoForm handleSubmit={handleSubmit} />
     </Modal>
   )

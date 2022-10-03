@@ -1,11 +1,35 @@
 import { styled } from '@lib/stitches.config'
+import { plum, blackA, mauve, grass, indigo } from '@radix-ui/colors'
 
 export const Button = styled('button', {
   all: 'unset',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: 8,
+  padding: '10px 25px',
+  fontWeight: 600,
   cursor: 'pointer',
-  borderRadius: 15,
-  padding: '5px 20px',
-  '&:hover': {
-    backgroundColor: '$plum3',
+  variants: {
+    variant: {
+      plum: {
+        backgroundColor: 'white',
+        color: plum.plum11,
+        boxShadow: `0 2px 10px ${blackA.blackA7}`,
+        '&:hover': { backgroundColor: mauve.mauve3 },
+        '&:focus': { boxShadow: `0 0 0 2px black` },
+      },
+      green: {
+        backgroundColor: grass.grass11,
+        color: 'white',
+      },
+      indigo: {
+        backgroundColor: indigo.indigo12,
+        color: 'white',
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'plum',
   },
 })
