@@ -49,6 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const todos = await db
     .collection('todos')
     .find({ user: session?.user.email })
+    .sort({ status: -1 })
     .toArray()
   return {
     props: {

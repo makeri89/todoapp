@@ -5,6 +5,7 @@ import { Wrapper } from './components'
 import { Text } from '@ui/atoms'
 import { useState } from 'react'
 import axios from 'axios'
+import dayjs from 'dayjs'
 
 interface Props {
   todo: TodoType
@@ -37,6 +38,9 @@ const Todo = ({ todo }: Props) => {
           handleChange={handleStatusChange}
         />
         <Text>{todo.task}</Text>
+        {todo.dueDate && todo.status !== 'completed' && (
+          <Text>{dayjs(todo.dueDate).format('DD.MM.')}</Text>
+        )}
       </Wrapper>
     </ContextMenu>
   )

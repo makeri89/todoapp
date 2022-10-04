@@ -3,7 +3,7 @@ import { Box } from '@ui/atoms'
 
 export const Wrapper = styled(Box, {
   display: 'grid',
-  gridTemplateColumns: 'auto 1fr',
+  gridTemplateColumns: 'auto 1fr auto',
   alignItems: 'center',
   gap: 10,
   margin: '15px 0',
