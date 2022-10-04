@@ -8,6 +8,7 @@ import {
 
 import { Todo as TodoType } from '@lib/types'
 import { useState } from 'react'
+import axios from 'axios'
 
 interface Props {
   todos: TodoType[]
@@ -39,6 +40,17 @@ const TodoList = ({ todos }: Props) => {
 
     setTodoState(newTodos)
   }
+
+  const handleTodoDelete = async (id: string) => {
+    await axios.post('/api/delete', {
+      id,
+    })
+
+    const newTodos = todoState.filter((todo) => todo.id !== id)
+
+    setTodoState(newTodos)
+  }
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="todolist">
@@ -52,7 +64,7 @@ const TodoList = ({ todos }: Props) => {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                   >
-                    <Todo todo={todo} />
+                    <Todo todo={todo} handleDelete={handleTodoDelete} />
                   </div>
                 )}
               </Draggable>
