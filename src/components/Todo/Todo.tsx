@@ -1,17 +1,19 @@
 import { Todo as TodoType } from '@lib/types'
-import ContextMenu from '@ui/ContextMenu'
 import Checkbox from '@ui/Checkbox'
 import { Wrapper } from './components'
-import { Text } from '@ui/atoms'
+import { Box, Button, Text } from '@ui/atoms'
 import { useState } from 'react'
 import axios from 'axios'
 import dayjs from 'dayjs'
+import Alert from '@ui/Alert'
+import { MouseEvent } from 'react'
 
 interface Props {
   todo: TodoType
+  handleDelete: Function
 }
 
-const Todo = ({ todo }: Props) => {
+const Todo = ({ todo, handleDelete }: Props) => {
   const [status, setStatus] = useState(todo.status)
 
   const handleStatusChange = async () => {
@@ -30,19 +32,30 @@ const Todo = ({ todo }: Props) => {
     }
   }
 
+  const handleDeleteConfirm = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    handleDelete(todo.id)
+  }
+
   return (
-    <ContextMenu>
-      <Wrapper size={{ '@initial': 'small', '@md': 'md' }} status={status}>
-        <Checkbox
-          checked={status === 'completed'}
-          handleChange={handleStatusChange}
-        />
-        <Text>{todo.task}</Text>
+    <Wrapper size={{ '@initial': 'small', '@md': 'md' }} status={status}>
+      <Checkbox
+        checked={status === 'completed'}
+        handleChange={handleStatusChange}
+      />
+      <Text css={{ gridColumnStart: 'span 2' }}>{todo.task}</Text>
+      <Box css={{ gridColumnStart: 'span 2' }}>
         {todo.dueDate && todo.status !== 'completed' && (
-          <Text>{dayjs(todo.dueDate).format('DD.MM.')}</Text>
+          <Text>Due: {dayjs(todo.dueDate).format('DD.MM.')}</Text>
         )}
-      </Wrapper>
-    </ContextMenu>
+      </Box>
+      <Alert
+        title="Delete todo?"
+        description="Are you sure you want to delete this todo?"
+        successHandler={handleDeleteConfirm}
+        trigger={<Button>Delete</Button>}
+      />
+    </Wrapper>
   )
 }
 

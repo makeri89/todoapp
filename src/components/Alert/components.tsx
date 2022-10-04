@@ -1,20 +1,6 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog'
-import { blackA } from '@radix-ui/colors'
-
 import { styled, keyframes } from '@lib/stitches.config'
-
-const StyledTitle = styled(DialogPrimitive.Title, {
-  margin: '0 0 10px 0',
-  fontWeight: 600,
-  color: '$plum4',
-})
-
-const StyledDescription = styled(DialogPrimitive.Description, {
-  margin: '10px 0 20px',
-  color: '$plum4',
-  fontSize: 15,
-  lineHeight: 1.5,
-})
+import { blackA } from '@radix-ui/colors'
+import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog'
 
 const overlayShow = keyframes({
   '0%': { opacity: 0 },
@@ -26,7 +12,17 @@ const contentShow = keyframes({
   '100%': { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
 })
 
-const StyledOverlay = styled(DialogPrimitive.Overlay, {
+const StyledTitle = styled(AlertDialogPrimitive.Title, {
+  margin: '0 0 10px 0',
+  fontWeight: 600,
+  color: '$plum4',
+})
+
+const StyledDescription = styled(AlertDialogPrimitive.Description, {
+  color: '$plum4',
+})
+
+const StyledOverlay = styled(AlertDialogPrimitive.Overlay, {
   backgroundColor: blackA.blackA9,
   position: 'fixed',
   inset: 0,
@@ -35,7 +31,7 @@ const StyledOverlay = styled(DialogPrimitive.Overlay, {
   },
 })
 
-const StyledContent = styled(DialogPrimitive.Content, {
+const StyledContent = styled(AlertDialogPrimitive.Content, {
   backgroundColor: 'white',
   borderRadius: 6,
   boxShadow:
@@ -70,20 +66,21 @@ interface ContentProps {
   size: any
 }
 
-const Content = ({ children, size, ...props }: ContentProps) => {
+const AlertContent = ({ children, size, ...props }: ContentProps) => {
   return (
-    <DialogPrimitive.Portal>
+    <AlertDialogPrimitive.Portal>
       <StyledOverlay />
       <StyledContent size={size} {...props}>
         {children}
       </StyledContent>
-    </DialogPrimitive.Portal>
+    </AlertDialogPrimitive.Portal>
   )
 }
 
-export const Dialog = DialogPrimitive.Root
-export const DialogTrigger = DialogPrimitive.Trigger
-export const DialogContent = Content
-export const DialogTitle = StyledTitle
-export const DialogDescription = StyledDescription
-export const DialogClose = DialogPrimitive.Close
+export const AlertDialog = AlertDialogPrimitive.Root
+export const Trigger = AlertDialogPrimitive.Trigger
+export const Title = StyledTitle
+export const Description = StyledDescription
+export const Content = AlertContent
+export const Action = AlertDialogPrimitive.Action
+export const Close = AlertDialogPrimitive.Cancel

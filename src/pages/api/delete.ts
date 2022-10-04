@@ -9,8 +9,8 @@ export default async function handler(
   const client = await clientPromise
   const db = client.db(process.env.MONGODB_DATABASE)
   const collection = db.collection('todos')
-  const { id, ...data } = req.body
+  const { id } = req.body
   const objectId = new ObjectId(id)
-  const todo = await collection.updateOne({ _id: objectId }, { $set: data })
+  const todo = await collection.deleteOne({ _id: objectId })
   res.status(200).json(todo)
 }
