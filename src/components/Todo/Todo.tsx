@@ -5,6 +5,8 @@ import { Box, Button, Text } from '@ui/atoms'
 import { useState } from 'react'
 import axios from 'axios'
 import dayjs from 'dayjs'
+import Alert from '@ui/Alert'
+import { MouseEvent } from 'react'
 
 interface Props {
   todo: TodoType
@@ -30,6 +32,11 @@ const Todo = ({ todo, handleDelete }: Props) => {
     }
   }
 
+  const handleDeleteConfirm = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
+    handleDelete(todo.id)
+  }
+
   return (
     <Wrapper size={{ '@initial': 'small', '@md': 'md' }} status={status}>
       <Checkbox
@@ -42,7 +49,13 @@ const Todo = ({ todo, handleDelete }: Props) => {
           <Text>{dayjs(todo.dueDate).format('DD.MM.')}</Text>
         )}
       </Box>
-      <Button onClick={() => handleDelete(todo.id)}>Delete</Button>
+      <Alert
+        title="Delete todo?"
+        description="Are you sure you want to delete this todo?"
+        successHandler={handleDeleteConfirm}
+        trigger={<Button>Delete</Button>}
+      />
+      {/* <Button>Delete</Button> */}
     </Wrapper>
   )
 }
