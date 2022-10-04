@@ -1,5 +1,4 @@
 import { Todo as TodoType } from '@lib/types'
-import ContextMenu from '@ui/ContextMenu'
 import Checkbox from '@ui/Checkbox'
 import { Wrapper } from './components'
 import { Text } from '@ui/atoms'
@@ -31,18 +30,16 @@ const Todo = ({ todo }: Props) => {
   }
 
   return (
-    <ContextMenu>
-      <Wrapper size={{ '@initial': 'small', '@md': 'md' }} status={status}>
-        <Checkbox
-          checked={status === 'completed'}
-          handleChange={handleStatusChange}
-        />
-        <Text>{todo.task}</Text>
-        {todo.dueDate && todo.status !== 'completed' && (
-          <Text>{dayjs(todo.dueDate).format('DD.MM.')}</Text>
-        )}
-      </Wrapper>
-    </ContextMenu>
+    <Wrapper size={{ '@initial': 'small', '@md': 'md' }} status={status}>
+      <Checkbox
+        checked={status === 'completed'}
+        handleChange={handleStatusChange}
+      />
+      <Text>{todo.task}</Text>
+      {todo.dueDate && todo.status !== 'completed' && (
+        <Text>{dayjs(todo.dueDate).format('DD.MM.')}</Text>
+      )}
+    </Wrapper>
   )
 }
 
