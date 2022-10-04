@@ -46,7 +46,7 @@ const Todo = ({ todo, handleDelete }: Props) => {
       <Text css={{ gridColumnStart: 'span 2' }}>{todo.task}</Text>
       <Box css={{ gridColumnStart: 'span 2' }}>
         {todo.dueDate && todo.status !== 'completed' && (
-          <Text>{dayjs(todo.dueDate).format('DD.MM.')}</Text>
+          <Text>Due: {dayjs(todo.dueDate).format('DD.MM.')}</Text>
         )}
       </Box>
       <Alert
@@ -55,7 +55,6 @@ const Todo = ({ todo, handleDelete }: Props) => {
         successHandler={handleDeleteConfirm}
         trigger={<Button>Delete</Button>}
       />
-      {/* <Button>Delete</Button> */}
     </Wrapper>
   )
 }
