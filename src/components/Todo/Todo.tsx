@@ -7,6 +7,7 @@ import axios from 'axios'
 import dayjs from 'dayjs'
 import Alert from '@ui/Alert'
 import { MouseEvent } from 'react'
+import ContextMenu from '@ui/ContextMenu'
 
 interface Props {
   todo: TodoType
@@ -38,28 +39,35 @@ const Todo = ({ todo, handleDelete }: Props) => {
   }
 
   return (
-    <Wrapper size={{ '@initial': 'small', '@md': 'md' }} status={status}>
-      <Checkbox
-        checked={status === 'completed'}
-        handleChange={handleStatusChange}
-      />
-      <Text css={{ gridColumnStart: 'span 2' }}>{todo.task}</Text>
-      <Box css={{ gridColumnStart: 'span 2' }}>
-        {todo.dueDate && todo.status !== 'completed' && (
-          <Text>Due: {dayjs(todo.dueDate).format('DD.MM.')}</Text>
-        )}
-      </Box>
-      <Alert
-        title="Delete todo?"
-        description="Are you sure you want to delete this todo?"
-        successHandler={handleDeleteConfirm}
-        trigger={
-          <Button size="sm" css={{ marginTop: -10, marginBottom: 5 }}>
-            Delete
-          </Button>
-        }
-      />
-    </Wrapper>
+    <ContextMenu
+      todo={todo}
+      internalStatus={status}
+      onStatusChange={handleStatusChange}
+      onDelete={handleDelete}
+    >
+      <Wrapper size={{ '@initial': 'small', '@md': 'md' }} status={status}>
+        <Checkbox
+          checked={status === 'completed'}
+          handleChange={handleStatusChange}
+        />
+        <Text css={{ gridColumnStart: 'span 2' }}>{todo.task}</Text>
+        <Box css={{ gridColumnStart: 'span 2' }}>
+          {todo.dueDate && todo.status !== 'completed' && (
+            <Text>Due: {dayjs(todo.dueDate).format('DD.MM.')}</Text>
+          )}
+        </Box>
+        <Alert
+          title="Delete todo?"
+          description="Are you sure you want to delete this todo?"
+          successHandler={handleDeleteConfirm}
+          trigger={
+            <Button size="sm" css={{ marginTop: -10, marginBottom: 5 }}>
+              Delete
+            </Button>
+          }
+        />
+      </Wrapper>
+    </ContextMenu>
   )
 }
 
