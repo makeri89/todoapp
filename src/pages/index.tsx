@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import { Todo } from '@lib/types'
-import { useSession } from 'next-auth/react'
-import { Box, Heading } from '@ui/atoms'
+import { useSession, signOut } from 'next-auth/react'
+import { Button, Flex, Heading } from '@ui/atoms'
 import ListArea from '@ui/ListArea'
 import NewTodoModal from '@ui/NewTodoModal'
 import clientPromise from '@lib/mongodb'
@@ -24,15 +24,23 @@ const Home: NextPage<Props> = ({ todos }) => {
   })
 
   return (
-    <Box
+    <Flex
       css={{
         textAlign: 'center',
+        flexDirection: 'column',
       }}
     >
       <Heading level="h1">Your todos, {session?.user.name}</Heading>
       <NewTodoModal />
+      <Button
+        css={{ margin: ' 10px auto' }}
+        // size="sm"
+        onClick={() => signOut()}
+      >
+        Sign out
+      </Button>
       <ListArea todos={todos} />
-    </Box>
+    </Flex>
   )
 }
 

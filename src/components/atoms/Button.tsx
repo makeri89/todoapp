@@ -7,7 +7,7 @@ export const Button = styled('button', {
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: 8,
-  padding: '10px 25px',
+  // padding: '10px 25px',
   fontWeight: 600,
   cursor: 'pointer',
   variants: {
@@ -24,12 +24,22 @@ export const Button = styled('button', {
         color: 'white',
       },
       indigo: {
-        backgroundColor: indigo.indigo12,
+        backgroundColor: indigo.indigo11,
         color: 'white',
+      },
+    },
+    size: {
+      sm: {
+        fontSize: 14,
+        padding: '5px 10px',
+      },
+      md: {
+        padding: '10px 25px',
       },
     },
   },
   defaultVariants: {
     variant: 'plum',
+    size: 'md',
   },
 })
