@@ -9,11 +9,12 @@ export const Wrapper = styled(Box, {
   margin: '15px 0',
   borderRadius: 15,
   textAlign: 'left',
-  padding: '20px 30px',
+  padding: '15px 25px',
   variants: {
     size: {
       small: {
         width: 'calc(90vw - 60px)',
+        padding: '10px 20px',
       },
       md: {
         width: 300,

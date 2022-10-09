@@ -53,7 +53,11 @@ const Todo = ({ todo, handleDelete }: Props) => {
         title="Delete todo?"
         description="Are you sure you want to delete this todo?"
         successHandler={handleDeleteConfirm}
-        trigger={<Button>Delete</Button>}
+        trigger={
+          <Button size="sm" css={{ marginTop: -10, marginBottom: 5 }}>
+            Delete
+          </Button>
+        }
       />
     </Wrapper>
   )

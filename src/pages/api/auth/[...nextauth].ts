@@ -27,6 +27,9 @@ export const authOptions: NextAuthOptions = {
     databaseName: process.env.MONGODB_DATABASE,
   }),
   secret: process.env.NNEXTAUTH_SECRET,
+  pages: {
+    verifyRequest: '/emailverify',
+  },
 }
 
 export default NextAuth(authOptions)
