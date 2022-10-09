@@ -1,6 +1,7 @@
 import { MongoTodo, Todo } from './types'
 import dayjs from 'dayjs'
 import isoWeek from 'dayjs/plugin/isoWeek'
+import axios from 'axios'
 
 dayjs.extend(isoWeek)
 
@@ -25,4 +26,10 @@ export const getWeek = (week: string): number | null => {
     default:
       return null
   }
+}
+
+export const updateTodo = async (
+  todo: Partial<Todo> & Required<Pick<Todo, 'id'>>
+): Promise<void> => {
+  await axios.post(`/api/update`, todo)
 }
