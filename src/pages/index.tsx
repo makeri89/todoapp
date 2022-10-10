@@ -9,6 +9,10 @@ import { parseMongoTodos } from '@lib/utils'
 import { useRouter } from 'next/router'
 import { unstable_getServerSession } from 'next-auth/next'
 import { authOptions } from './api/auth/[...nextauth]'
+import dayjs from 'dayjs'
+import isoWeek from 'dayjs/plugin/isoWeek'
+
+dayjs.extend(isoWeek)
 
 interface Props {
   todos: Todo[]
@@ -32,11 +36,7 @@ const Home: NextPage<Props> = ({ todos }) => {
     >
       <Heading level="h1">Your todos, {session?.user.name}</Heading>
       <NewTodoModal />
-      <Button
-        css={{ margin: ' 10px auto' }}
-        // size="sm"
-        onClick={() => signOut()}
-      >
+      <Button css={{ margin: ' 10px auto' }} onClick={() => signOut()}>
         Sign out
       </Button>
       <ListArea todos={todos} />
@@ -56,7 +56,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const db = client.db(process.env.MONGODB_DATABASE)
   const todos = await db
     .collection('todos')
-    .find({ user: session?.user.email })
+    .find({
+      user: session?.user.email,
+      week: {
+        $gte: dayjs().isoWeek(),
+      },
+    })
     .sort({ status: -1 })
     .toArray()
   return {
