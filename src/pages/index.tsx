@@ -58,9 +58,18 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     .collection('todos')
     .find({
       user: session?.user.email,
-      week: {
-        $gte: dayjs().isoWeek(),
-      },
+      $or: [
+        {
+          week: {
+            $gte: dayjs().isoWeek(),
+          },
+        },
+        {
+          week: {
+            $eq: null,
+          },
+        },
+      ],
     })
     .sort({ status: -1 })
     .toArray()
