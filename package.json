@@ -13,7 +13,7 @@
     "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "dependencies": {
-    "@next-auth/mongodb-adapter": "^1.1.0",
+    "@next-auth/mongodb-adapter": "^1.1.1",
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-alert-dialog": "^1.0.0",
     "@radix-ui/react-checkbox": "^1.0.0",
@@ -46,7 +46,7 @@
     "@storybook/manager-webpack5": "^6.5.12",
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "^0.0.13",
-    "@types/node": "18.7.23",
+    "@types/node": "18.8.3",
     "@types/ramda": "^0.28.15",
     "@types/react": "18.0.21",
     "@types/react-beautiful-dnd": "^13.1.2",
