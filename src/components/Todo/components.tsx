@@ -10,6 +10,7 @@ export const Wrapper = styled(Box, {
   borderRadius: 15,
   textAlign: 'left',
   padding: '15px 25px',
+  color: '$gray12',
   variants: {
     size: {
       small: {

@@ -7,7 +7,6 @@ export const Button = styled('button', {
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: 8,
-  // padding: '10px 25px',
   fontWeight: 600,
   cursor: 'pointer',
   variants: {
