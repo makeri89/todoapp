@@ -54,7 +54,7 @@
     "babel-loader": "^8.2.5",
     "chromatic": "^6.11.4",
     "eslint": "8.27.0",
-    "eslint-config-next": "12.3.1",
+    "eslint-config-next": "13.0.5",
     "eslint-plugin-storybook": "^0.6.5",
     "husky": ">=6",
     "lint-staged": ">=10",
