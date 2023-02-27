@@ -2342,15 +2342,15 @@
   dependencies:
     "@babel/runtime" "^7.13.10"
 
-"@radix-ui/react-context-menu@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-context-menu/-/react-context-menu-2.0.1.tgz#aee7c81bac9983b3748284bf3925dd63796c90b4"
-  integrity sha512-7DuhU4xDcUk3AMJUlb5tHHOvJZ1GF4+snDIpjtWGlTvO0VktNKgbvBuGLlirdkYoUSI0mJXwOUcUXQapgIyefw==
+"@radix-ui/react-context-menu@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-context-menu/-/react-context-menu-2.1.2.tgz#ac6244489a329d84952161b9173a4fdab238fc2a"
+  integrity sha512-QSfnwoXk5XHBEfXbmbrL1e0Jo+VCAWBmW4TgjWyoa8pv6bdQt2Nw10VVJj80+ECdTlQ2ZLDcAjhbI5tZvKUM5g==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/primitive" "1.0.0"
     "@radix-ui/react-context" "1.0.0"
-    "@radix-ui/react-menu" "2.0.1"
+    "@radix-ui/react-menu" "2.0.3"
     "@radix-ui/react-primitive" "1.0.1"
     "@radix-ui/react-use-callback-ref" "1.0.0"
     "@radix-ui/react-use-controllable-state" "1.0.0"
@@ -2440,10 +2440,10 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-primitive" "1.0.1"
 
-"@radix-ui/react-menu@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-menu/-/react-menu-2.0.1.tgz#44ebfd45d8482db678b935c0b9d1102d683372d8"
-  integrity sha512-I5FFZQxCl2fHoJ7R0m5/oWA9EX8/ttH4AbgneoCH7DAXQioFeb0XMAYnOVSp1GgJZ1Nx/mohxNQSeTMcaF1YPw==
+"@radix-ui/react-menu@2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-menu/-/react-menu-2.0.3.tgz#7bfa1b8e976a829c37ad4660967b59fd46df1b08"
+  integrity sha512-JKgWMzNhWqnimRynMDtR26bKfpraGUj4e39+g9p45Fb1XTEDWepjvtBlkjhZcM068VHiwp7HALqkt7Y5qVRbyQ==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/primitive" "1.0.0"
@@ -2455,20 +2455,20 @@
     "@radix-ui/react-focus-guards" "1.0.0"
     "@radix-ui/react-focus-scope" "1.0.1"
     "@radix-ui/react-id" "1.0.0"
-    "@radix-ui/react-popper" "1.0.1"
+    "@radix-ui/react-popper" "1.1.0"
     "@radix-ui/react-portal" "1.0.1"
     "@radix-ui/react-presence" "1.0.0"
     "@radix-ui/react-primitive" "1.0.1"
-    "@radix-ui/react-roving-focus" "1.0.1"
+    "@radix-ui/react-roving-focus" "1.0.2"
     "@radix-ui/react-slot" "1.0.1"
     "@radix-ui/react-use-callback-ref" "1.0.0"
     aria-hidden "^1.1.1"
     react-remove-scroll "2.5.5"
 
-"@radix-ui/react-popper@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-popper/-/react-popper-1.0.1.tgz#9fa8a6a493404afa225866a5cd75af23d141baa0"
-  integrity sha512-J4Vj7k3k+EHNWgcKrE+BLlQfpewxA7Zd76h5I0bIa+/EqaIZ3DuwrbPj49O3wqN+STnXsBuxiHLiF0iU3yfovw==
+"@radix-ui/react-popper@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-popper/-/react-popper-1.1.0.tgz#2be7e4c0cd4581f54277ca33a981c9037d2a8e60"
+  integrity sha512-07U7jpI0dZcLRAxT7L9qs6HecSoPhDSJybF7mEGHJDBDv+ZoGCvIlva0s+WxMXwJEav+ckX3hAlXBtnHmuvlCQ==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@floating-ui/react-dom" "0.7.2"
@@ -2476,6 +2476,7 @@
     "@radix-ui/react-compose-refs" "1.0.0"
     "@radix-ui/react-context" "1.0.0"
     "@radix-ui/react-primitive" "1.0.1"
+    "@radix-ui/react-use-callback-ref" "1.0.0"
     "@radix-ui/react-use-layout-effect" "1.0.0"
     "@radix-ui/react-use-rect" "1.0.0"
     "@radix-ui/react-use-size" "1.0.0"
@@ -2506,10 +2507,10 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-slot" "1.0.1"
 
-"@radix-ui/react-roving-focus@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-roving-focus/-/react-roving-focus-1.0.1.tgz#475621f63aee43faa183a5270f35d49e530de3d7"
-  integrity sha512-TB76u5TIxKpqMpUAuYH2VqMhHYKa+4Vs1NHygo/llLvlffN6mLVsFhz0AnSFlSBAvTBYVHYAkHAyEt7x1gPJOA==
+"@radix-ui/react-roving-focus@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-roving-focus/-/react-roving-focus-1.0.2.tgz#d8ac2e3b8006697bdfc2b0eb06bef7e15b6245de"
+  integrity sha512-HLK+CqD/8pN6GfJm3U+cqpqhSKYAWiOJDe+A+8MfxBnOue39QEeMa43csUn2CXCHQT0/mewh1LrrG4tfkM9DMA==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/primitive" "1.0.0"
